@@ -29,10 +29,10 @@ def select_model(args, device):
         model = GFMN(dim=36, n_blocks=8, ffn_scale=2, upscaling_factor=4)
         model.load_state_dict(torch.load(model_path)['params'], strict=True)
     elif model_id == 15:
-        from models.team15_SAFMN import SAFMN
-        name, data_range = f"{model_id:16}_SAFMN", 1.0
-        model_path = os.path.join('model_zoo', 'team15_SAFMN.pth')
-        model = SAFMN(dim=36, n_blocks=8, ffn_scale=2.0, upscaling_factor=4)
+        from models.team15_Edge_SAFMN import Edge_SAFMN
+        name, data_range = f"{model_id:16}_Edge_SAFMN", 1.0
+        model_path = os.path.join('model_zoo', 'team15_Edge_SAFMN.pth')
+        model = Edge_SAFMN(dim=36, n_blocks=8, ffn_scale=2.0, upscaling_factor=4)
         model.load_state_dict(torch.load(model_path)['params'], strict=True)
 
     else:

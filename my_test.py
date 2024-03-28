@@ -253,7 +253,7 @@
 #     return True
 #
 # # 图片路径
-# image_path = "C:\\Users\\22359\\Desktop\\10849x4_gray154SAFMN.png"
+# image_path = "C:\\Users\\22359\\Desktop\\10849x4_gray154Edge_SAFMN.png"
 #
 # # 检查三通道的值是否相等
 # result = check_channels_equal(image_path)
@@ -637,8 +637,8 @@
 # if __name__ == "__main__":
 #     original_folder = "C:\\Users\\22359\\Desktop\\image\\DeepRockSR-2D\\shuffled2D\\shuffled2D_test_HR"
 #     compressed_folder = "C:\\Users\\22359\\Desktop\\image\\DeepRockSR-2D\\shuffled2D\\shuffled2D_test_LR_default_X4_upsample"
-#     # compressed_folder = "C:\\Users\\22359\\Desktop\\generate\\gray552SAFMN\\visualization\\Set5"
-#     # compressed_folder = "C:\\Users\\22359\\Desktop\\generate\\2gray154SAFMN\\visualization\\Set5"
+#     # compressed_folder = "C:\\Users\\22359\\Desktop\\generate\\gray552Edge_SAFMN\\visualization\\Set5"
+#     # compressed_folder = "C:\\Users\\22359\\Desktop\\generate\\2gray154Edge_SAFMN\\visualization\\Set5"
 #
 #
 #     calculate_psnr_for_folder(original_folder, compressed_folder)
@@ -835,7 +835,7 @@
 #
 # # 读取图像
 # image_path = "C:\\Users\\22359\\Desktop\\image\\DeepRockSR-2D\\shuffled2D\\shuffled2D_test_HR\\10803.png"  # 替换为你的图像路径
-# # image_path = "C:\\Users\\22359\\Desktop\\valid\\results\\0055B4SAFMN\\visualization\\Set5\\10803x4_0055B4SAFMN.png"  # 替换为你的图像路径
+# # image_path = "C:\\Users\\22359\\Desktop\\valid\\results\\0055B4Edge_SAFMN\\visualization\\Set5\\10803x4_0055B4Edge_SAFMN.png"  # 替换为你的图像路径
 # original_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 #
 # # 使用Sobel算子进行边缘检测
@@ -1043,8 +1043,8 @@
 # # image = cv2.imread("C:\\Users\\22359\\Desktop\\valid\\SR_latest\\SuperRestoration-master\\SRCNN\\test_res\\test_x4_Set5\\x4\\10803.png", cv2.IMREAD_GRAYSCALE)
 # # image = cv2.imread("C:\\Users\\22359\\Desktop\\image\\DeepRockSR-2D\\shuffled2D\\shuffled2D_test_HR\\10803.png", cv2.IMREAD_GRAYSCALE)
 # # image = cv2.imread("C:\\Users\\22359\\Desktop\\valid\\SR_latest\\SuperRestoration-master\\FSRCNN\\test_res\\x4\\10803_FSRCNN_x4.png", cv2.IMREAD_GRAYSCALE)
-# # image = cv2.imread("C:\\Users\\22359\\Desktop\\valid\\results\\0055B4SAFMN\\visualization\\Set5\\10803x4_0055B4SAFMN.png", cv2.IMREAD_GRAYSCALE)
-# image = cv2.imread("C:\\Users\\22359\\Desktop\\valid\\results\\155B4SAFMN\\visualization\\Set5\\10803x4_155B4SAFMN.png", cv2.IMREAD_GRAYSCALE)
+# # image = cv2.imread("C:\\Users\\22359\\Desktop\\valid\\results\\0055B4Edge_SAFMN\\visualization\\Set5\\10803x4_0055B4Edge_SAFMN.png", cv2.IMREAD_GRAYSCALE)
+# image = cv2.imread("C:\\Users\\22359\\Desktop\\valid\\results\\155B4Edge_SAFMN\\visualization\\Set5\\10803x4_155B4Edge_SAFMN.png", cv2.IMREAD_GRAYSCALE)
 #
 # # 计算灰度直方图
 # hist, bins = np.histogram(image.flatten(), 256, [0, 256])
@@ -1110,14 +1110,14 @@ def calculate_threshold(image_path):
     return threshold
 
 # nums = ["10803","10820","10826","10804","10821","10838","10807","10831","11984"]
-image_paths = ["C:\\Users\\22359\\Desktop\\image\\DeepRockSR-2D\\shuffled2D\\shuffled2D_test_HR\\","C:\\Users\\22359\\Desktop\\valid\\SR_latest\\SuperRestoration-master\\SRCNN\\test_res\\test_x4_Set5\\x4\\","C:\\Users\\22359\\Desktop\\valid\\SR_latest\\SuperRestoration-master\\FSRCNN\\test_res\\x4\\","C:\\Users\\22359\\Desktop\\valid\\results\\0055B4SAFMN\\visualization\\Set5\\","C:\\Users\\22359\\Desktop\\valid\\results\\155B4SAFMN\\visualization\\Set5\\"]
-image_names =[".png",".png","_FSRCNN_x4.png","x4_0055B4SAFMN.png","x4_155B4SAFMN.png"]
+image_paths = ["C:\\Users\\22359\\Desktop\\image\\DeepRockSR-2D\\shuffled2D\\shuffled2D_test_HR\\","C:\\Users\\22359\\Desktop\\valid\\SR_latest\\SuperRestoration-master\\SRCNN\\test_res\\test_x4_Set5\\x4\\","C:\\Users\\22359\\Desktop\\valid\\SR_latest\\SuperRestoration-master\\FSRCNN\\test_res\\x4\\","C:\\Users\\22359\\Desktop\\valid\\results\\0055B4Edge_SAFMN\\visualization\\Set5\\","C:\\Users\\22359\\Desktop\\valid\\results\\155B4Edge_SAFMN\\visualization\\Set5\\"]
+image_names =[".png",".png","_FSRCNN_x4.png","x4_0055B4Edge_SAFMN.png","x4_155B4Edge_SAFMN.png"]
 voidages = np.zeros(len(image_paths))
 # image_path = "C:\\Users\\22359\\Desktop\\image\\DeepRockSR-2D\\shuffled2D\\shuffled2D_test_HR\\10803.png"
 # image_path = "C:\\Users\\22359\\Desktop\\valid\\SR_latest\\SuperRestoration-master\\SRCNN\\test_res\\test_x4_Set5\\x4\\10803.png"
 # image_path = "C:\\Users\\22359\\Desktop\\valid\\SR_latest\\SuperRestoration-master\\FSRCNN\\test_res\\x4\\10803_FSRCNN_x4.png"
-# image_path = "C:\\Users\\22359\\Desktop\\valid\\results\\0055B4SAFMN\\visualization\\Set5\\10803x4_0055B4SAFMN.png"
-# image_path = "C:\\Users\\22359\\Desktop\\valid\\results\\155B4SAFMN\\visualization\\Set5\\10803x4_155B4SAFMN.png"
+# image_path = "C:\\Users\\22359\\Desktop\\valid\\results\\0055B4Edge_SAFMN\\visualization\\Set5\\10803x4_0055B4Edge_SAFMN.png"
+# image_path = "C:\\Users\\22359\\Desktop\\valid\\results\\155B4Edge_SAFMN\\visualization\\Set5\\10803x4_155B4Edge_SAFMN.png"
 original_voidage = 1
 for i in range(len(nums)):
     for j in range(len(image_paths)):
@@ -1194,8 +1194,8 @@ print(voidages/len(nums))
 # if __name__ == "__main__":
 #     # input_image_path = "C:\\Users\\22359\\Desktop\\image\\DeepRockSR-2D\\shuffled2D\\shuffled2D_test_HR\\10803.png"
 #     # input_image_path = "C:\\Users\\22359\\Desktop\\image\\DeepRockSR-2D\\shuffled2D\\shuffled2D_test_LR_default_X4_upsample\\10803x4.png"
-#     # input_image_path = "C:\\Users\\22359\\Desktop\\valid\\results\\0055B4SAFMN\\visualization\\Set5\\10803x4_0055B4SAFMN.png"
-#     # input_image_path = "C:\\Users\\22359\\Desktop\\valid\\results\\155B4SAFMN\\visualization\\Set5\\10803x4_155B4SAFMN.png"
+#     # input_image_path = "C:\\Users\\22359\\Desktop\\valid\\results\\0055B4Edge_SAFMN\\visualization\\Set5\\10803x4_0055B4Edge_SAFMN.png"
+#     # input_image_path = "C:\\Users\\22359\\Desktop\\valid\\results\\155B4Edge_SAFMN\\visualization\\Set5\\10803x4_155B4Edge_SAFMN.png"
 #     # input_image_path = "C:\\Users\\22359\\Desktop\\valid\\SR_latest\\SuperRestoration-master\\FSRCNN\\test_res\\x4\\10803_FSRCNN_x4.png"
 #     input_image_path = "C:\\Users\\22359\\Desktop\\valid\\SR_latest\\SuperRestoration-master\\SRCNN\\test_res\\test_x4_Set5\\x4\\10803.png"
 #     output_image_path = "carbon_SRCNN_birdseye.jpg"

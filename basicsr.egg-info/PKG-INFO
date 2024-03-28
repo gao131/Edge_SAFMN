@@ -21,7 +21,7 @@ Description-Content-Type: text/markdown
 [IMAG Lab](https://imag-njust.net/), Nanjing University of Science and Technology
 
 ---
-[![GitHub Stars](https://img.shields.io/github/stars/sunny2109/SAFMN?style=social)](https://github.com/sunny2109/SAFMN)  ![visitors](https://visitor-badge.glitch.me/badge?page_id=sunny2109/SAFMN)  [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/pdf/2302.13800.pdf)  ![update](https://badges.strrl.dev/updated/sunny2109/SAFMN)
+[![GitHub Stars](https://img.shields.io/github/stars/sunny2109/Edge_SAFMN?style=social)](https://github.com/sunny2109/Edge_SAFMN)  ![visitors](https://visitor-badge.glitch.me/badge?page_id=sunny2109/Edge_SAFMN)  [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/pdf/2302.13800.pdf)  ![update](https://badges.strrl.dev/updated/sunny2109/Edge_SAFMN)
 
 
 ---
@@ -29,7 +29,7 @@ Description-Content-Type: text/markdown
   <img width="800" src="./figs/framework.png">
 </p>
 
-*An overview of the proposed SAFMN. SAFMN first transforms the input LR image into the feature space using a convolutional layer, performs feature extraction using a series of feature mixing modules (FMMs), and then reconstructs these extracted features by an upsampler module. The FMM block is mainly implemented by a spatially-adaptive feature modulation (SAFM) layer and a convolutional channel mixer (CCM).*
+*An overview of the proposed Edge_SAFMN. Edge_SAFMN first transforms the input LR image into the feature space using a convolutional layer, performs feature extraction using a series of feature mixing modules (FMMs), and then reconstructs these extracted features by an upsampler module. The FMM block is mainly implemented by a spatially-adaptive feature modulation (SAFM) layer and a convolutional channel mixer (CCM).*
 
 
 ### Requirements
@@ -42,22 +42,22 @@ Description-Content-Type: text/markdown
 ### Training
 Run the following commands for training:
 ```
-# train SAFMN for x4 effieicnt SR
-python basicsr/train.py -opt options/train/SAFMN/train_DF2K_x4.yml
-# train SAFMN for x4 classic SR
-python basicsr/train.py -opt options/train/SAFMN/train_L_DF2K_x4.yml
+# train Edge_SAFMN for x4 effieicnt SR
+python basicsr/train.py -opt options/train/Edge_SAFMN/train_DF2K_x4.yml
+# train Edge_SAFMN for x4 classic SR
+python basicsr/train.py -opt options/train/Edge_SAFMN/train_L_DF2K_x4.yml
 ```
 ### Testing 
 - Download the pretrained models.
 - Download the testing dataset.
 - Run the following commands:
 ```
-# test SAFMN for x4 efficient SR
-python basicsr/test.py -opt options/test/SAFMN/test_benchmark_x4.yml
-# test SAFMN for x4 classic SR
-python basicsr/test.py -opt options/test/SAFMN/test_L_benchmark_x4.yml
-# test SAFMN for x4 real-world SR (without ground-truth)
-python basicsr/test.py -opt options/test/SAFMN/test_real_x4.yml
+# test Edge_SAFMN for x4 efficient SR
+python basicsr/test.py -opt options/test/Edge_SAFMN/test_benchmark_x4.yml
+# test Edge_SAFMN for x4 classic SR
+python basicsr/test.py -opt options/test/Edge_SAFMN/test_L_benchmark_x4.yml
+# test Edge_SAFMN for x4 real-world SR (without ground-truth)
+python basicsr/test.py -opt options/test/Edge_SAFMN/test_real_x4.yml
 ```
 - The test results will be in './results'.
 
@@ -78,12 +78,12 @@ python basicsr/test.py -opt options/test/SAFMN/test_real_x4.yml
 
 - **Real-world SR Results**
 
-|Real-World Image (x4)|Real-ESRGAN  |SwinIR     | SAFMN (ours)|
+|Real-World Image (x4)|Real-ESRGAN  |SwinIR     | Edge_SAFMN (ours)|
 |       :---          |     :---:   |  :-----:  |  :-----:    |        
-| <img width="350" src="figs/real_figs/five_golden_flowers_02.png">|<img width="350" src="figs/real_figs/five_golden_flowers_02_realESRGAN.png">|<img width="350" src="figs/real_figs/five_golden_flowers_02_SwinIR.png">|<img width="350" src="figs/real_figs/five_golden_flowers_02_SAFMN.png">
-| <img width="350" src="figs/real_figs/five_golden_flowers_01.png">|<img width="350" src="figs/real_figs/five_golden_flowers_01_realESRGAN.png">|<img width="350" src="figs/real_figs/five_golden_flowers_01_SwinIR.png">|<img width="350" src="figs/real_figs/five_golden_flowers_01_SAFMN.png">
-| <img width="350" src="figs/real_figs/kobe_curry.png">|<img width="350" src="figs/real_figs/kobe_curry_realESRGAN.png">|<img width="350" src="figs/real_figs/kobe_curry_SwinIR.png">|<img width="350" src="figs/real_figs/kobe_curry_SAFMN.png">
-| <img width="350" src="figs/real_figs/little_carp.png">|<img width="350" src="figs/real_figs/little_carp_realESRGAN.png">|<img width="350" src="figs/real_figs/little_carp_SwinIR.png">|<img width="350" src="figs/real_figs/little_carp_SAFMN.png">
+| <img width="350" src="figs/real_figs/five_golden_flowers_02.png">|<img width="350" src="figs/real_figs/five_golden_flowers_02_realESRGAN.png">|<img width="350" src="figs/real_figs/five_golden_flowers_02_SwinIR.png">|<img width="350" src="figs/real_figs/five_golden_flowers_02_Edge_SAFMN.png">
+| <img width="350" src="figs/real_figs/five_golden_flowers_01.png">|<img width="350" src="figs/real_figs/five_golden_flowers_01_realESRGAN.png">|<img width="350" src="figs/real_figs/five_golden_flowers_01_SwinIR.png">|<img width="350" src="figs/real_figs/five_golden_flowers_01_Edge_SAFMN.png">
+| <img width="350" src="figs/real_figs/kobe_curry.png">|<img width="350" src="figs/real_figs/kobe_curry_realESRGAN.png">|<img width="350" src="figs/real_figs/kobe_curry_SwinIR.png">|<img width="350" src="figs/real_figs/kobe_curry_Edge_SAFMN.png">
+| <img width="350" src="figs/real_figs/little_carp.png">|<img width="350" src="figs/real_figs/little_carp_realESRGAN.png">|<img width="350" src="figs/real_figs/little_carp_SwinIR.png">|<img width="350" src="figs/real_figs/little_carp_Edge_SAFMN.png">
 
 
 - **Runtime Comparison**
@@ -96,7 +96,7 @@ python basicsr/test.py -opt options/test/SAFMN/test_real_x4.yml
 ### Citation
 If this work is helpful for your research, please consider citing the following BibTeX entry.
 ```
-@article{sun2023safmn,
+@article{sun2023Edge_SAFMN,
     title={Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution},
     author={Sun, Long and Dong, Jiangxin and Tang, Jinhui and Pan, Jinshan},
     journal={arXiv preprint arXiv:2302.13800},

@@ -278,7 +278,7 @@ class SobelConv2d(nn.Module):
         return out    
     
 @ARCH_REGISTRY.register()
-class SAFMN(nn.Module):
+class Edge_SAFMN(nn.Module):
     def __init__(self, dim, n_blocks=8, ffn_scale=2.0, upscaling_factor=4):
         super().__init__()
         self.to_feat = nn.Conv2d(3, dim, 3, 1, 1)
@@ -289,7 +289,7 @@ class SAFMN(nn.Module):
         self.feats = nn.ModuleList([AttBlock(dim, ffn_scale) for i in range(n_blocks)])
         self.n_blocks = n_blocks
         
-        # 8X5SAFMN
+        # 8X5Edge_SAFMN
         self.to_img = nn.Sequential(
             nn.Conv2d(dim, 3*upscaling_factor**2, 3, 1, 1),
             nn.PixelShuffle(upscaling_factor)
@@ -345,8 +345,8 @@ if __name__== '__main__':
     x = torch.randn(1, 3, 100, 100)
     # x = torch.randn(1, 3, 256, 256)
 
-    model = SAFMN(dim=36, n_blocks=8, ffn_scale=2.0, upscaling_factor=4)
-    # model = SAFMN(dim=36, n_blocks=12, ffn_scale=2.0, upscaling_factor=2)
+    model = Edge_SAFMN(dim=36, n_blocks=8, ffn_scale=2.0, upscaling_factor=4)
+    # model = Edge_SAFMN(dim=36, n_blocks=12, ffn_scale=2.0, upscaling_factor=2)
     print(model)
     print(f'params: {sum(map(lambda x: x.numel(), model.parameters()))}')
     # print(flop_count_table(FlopCountAnalysis(model, x), activations=ActivationCountAnalysis(model, x)))

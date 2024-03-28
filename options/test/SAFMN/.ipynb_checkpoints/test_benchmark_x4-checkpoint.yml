@@ -1,4 +1,4 @@
-name: 155B4SAFMN
+name: 155B4Edge_SAFMN
 model_type: SRModel
 scale: 4
 num_gpu: 1  # set num_gpu: 0 for cpu mode
@@ -63,7 +63,7 @@ datasets:
 
 # network structures
 network_g:
-  type: SAFMN
+  type: Edge_SAFMN
   dim: 36
   n_blocks: 8
   ffn_scale: 2.0
@@ -72,8 +72,8 @@ network_g:
 
 # path
 path:
-  pretrain_network_g: /mnt/22gaochennian/SR/SAFMN-main/experiments/155B4SAFMN/models/net_g_15000.pth
-  # pretrain_network_g: /mnt/22gaochennian/SR/SAFMN-main/experiments/m2x55B4SAFMN/models/net_g_25000.pth
+  pretrain_network_g: /mnt/22gaochennian/SR/Edge_SAFMN-main/experiments/155B4Edge_SAFMN/models/net_g_15000.pth
+  # pretrain_network_g: /mnt/22gaochennian/SR/Edge_SAFMN-main/experiments/m2x55B4Edge_SAFMN/models/net_g_25000.pth
   strict_load_g: true
 
 # validation settings

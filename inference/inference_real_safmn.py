@@ -8,16 +8,16 @@ import torch
 from torch.nn import functional as F
 from basicsr.utils.download_util import load_file_from_url
 from basicsr.utils.colorfix import wavelet_reconstruction
-from basicsr.archs.safmn_arch import SAFMN
+from basicsr.archs.edge_Edge_SAFMN_arch import Edge_SAFMN
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', type=str, default='datasets/test', help='input test image folder')
-    parser.add_argument('--output', type=str, default='results/SAFMN/test_results', help='output folder')
+    parser.add_argument('--output', type=str, default='results/Edge_SAFMN/test_results', help='output folder')
     parser.add_argument('--scale', type=int, default=2, help='upscaling factor')
     parser.add_argument('--color_fix', action='store_true', help='use the wavlet color fix for color correction')
     parser.add_argument('--large_input', action='store_true', help='the input image with large resolution, we crop the input into sub-images for memory-efficient forward')
-    parser.add_argument('--model_path', type=str, default='https://github.com/sunny2109/SAFMN/releases/download/v0.1.0/SAFMN_L_Real_LSDIR_x2.pth')
+    parser.add_argument('--model_path', type=str, default='https://github.com/sunny2109/Edge_SAFMN/releases/download/v0.1.0/Edge_SAFMN_L_Real_LSDIR_x2.pth')
     args = parser.parse_args()
 
     os.makedirs(args.output, exist_ok=True)
@@ -25,7 +25,7 @@ def main():
     torch.cuda.empty_cache()
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     # set up model
-    model = SAFMN(dim=128, n_blocks=16, ffn_scale=2.0, upscaling_factor=args.scale)
+    model = Edge_SAFMN(dim=128, n_blocks=16, ffn_scale=2.0, upscaling_factor=args.scale)
 
     # if the model_path starts with https, it will first download models to the folder: realesrgan/weights
     if args.model_path.startswith('https://'):
@@ -80,7 +80,7 @@ def main():
         if output.ndim == 3:
             output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
         output = (output * 255.0).round().astype(np.uint8)
-        cv2.imwrite(os.path.join(args.output, f'{imgname}_SAFMN.png'), output)
+        cv2.imwrite(os.path.join(args.output, f'{imgname}_Edge_SAFMN.png'), output)
 
 
 def img2patch(lq, scale=4, crop_size=512):

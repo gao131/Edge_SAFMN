@@ -1,5 +1,5 @@
 import sys
-sys.path.append('SAFMN')
+sys.path.append('Edge_SAFMN')
 
 import os
 import cv2
@@ -13,31 +13,31 @@ import gradio as gr
 
 from basicsr.utils.download_util import load_file_from_url
 from basicsr.utils.colorfix import wavelet_reconstruction
-from basicsr.archs.safmn_arch import SAFMN
+from basicsr.archs.edge_Edge_SAFMN_arch import Edge_SAFMN
 
 
 pretrain_model_url = {
-	'safmn_x2': 'https://github.com/sunny2109/SAFMN/releases/download/v0.1.0/SAFMN_L_Real_LSDIR_x2.pth',
-	'safmn_x4': 'https://github.com/sunny2109/SAFMN/releases/download/v0.1.0/SAFMN_L_Real_LSDIR_x4-v2.pth',
+	'Edge_SAFMN_x2': 'https://github.com/sunny2109/Edge_SAFMN/releases/download/v0.1.0/Edge_SAFMN_L_Real_LSDIR_x2.pth',
+	'Edge_SAFMN_x4': 'https://github.com/sunny2109/Edge_SAFMN/releases/download/v0.1.0/Edge_SAFMN_L_Real_LSDIR_x4-v2.pth',
 }
 
 
 # download weights
-if not os.path.exists('./experiments/pretrained_models/SAFMN_L_Real_LSDIR_x2.pth'):
-	load_file_from_url(url=pretrain_model_url['safmn_x2'], model_dir='./experiments/pretrained_models/', progress=True, file_name=None)
+if not os.path.exists('./experiments/pretrained_models/Edge_SAFMN_L_Real_LSDIR_x2.pth'):
+	load_file_from_url(url=pretrain_model_url['Edge_SAFMN_x2'], model_dir='./experiments/pretrained_models/', progress=True, file_name=None)
 
-if not os.path.exists('./experiments/pretrained_models/SAFMN_L_Real_LSDIR_x4-v2.pth'):
-	load_file_from_url(url=pretrain_model_url['safmn_x4'], model_dir='./experiments/pretrained_models/', progress=True, file_name=None)
+if not os.path.exists('./experiments/pretrained_models/Edge_SAFMN_L_Real_LSDIR_x4-v2.pth'):
+	load_file_from_url(url=pretrain_model_url['Edge_SAFMN_x4'], model_dir='./experiments/pretrained_models/', progress=True, file_name=None)
 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-def set_safmn(upscale):
-	model = SAFMN(dim=128, n_blocks=16, ffn_scale=2.0, upscaling_factor=upscale)
+def set_Edge_SAFMN(upscale):
+	model = Edge_SAFMN(dim=128, n_blocks=16, ffn_scale=2.0, upscaling_factor=upscale)
 	if upscale == 2:
-		model_path = './experiments/pretrained_models/SAFMN_L_Real_LSDIR_x2.pth'
+		model_path = './experiments/pretrained_models/Edge_SAFMN_L_Real_LSDIR_x2.pth'
 	elif upscale == 4:
-		model_path = './experiments/pretrained_models/SAFMN_L_Real_LSDIR_x4-v2.pth'
+		model_path = './experiments/pretrained_models/Edge_SAFMN_L_Real_LSDIR_x4-v2.pth'
 	else:
 		raise NotImplementedError('Only support x2/x4 upscaling!')
 
@@ -114,7 +114,7 @@ def inference(image, upscale, large_input_flag, color_fix):
 	if 0 < upscale < 3:
 		upscale = 2
 
-	model = set_safmn(upscale)
+	model = set_Edge_SAFMN(upscale)
 
 	img = cv2.imread(str(image), cv2.IMREAD_COLOR)
 	print(f'input size: {img.shape}')
@@ -169,18 +169,18 @@ def inference(image, upscale, large_input_flag, color_fix):
 
 title = "Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution"
 description = r"""
-<b>Official Gradio demo</b> for <a href='https://github.com/sunny2109/SAFMN' target='_blank'><b>Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution (ICCV 2023)</b></a>.<br>
+<b>Official Gradio demo</b> for <a href='https://github.com/sunny2109/Edge_SAFMN' target='_blank'><b>Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution (ICCV 2023)</b></a>.<br>
 """
 article = r"""
-If SAFMN is helpful, please help to ⭐ the <a href='https://github.com/sunny2109/SAFMN' target='_blank'>Github Repo</a>. Thanks!
-[![GitHub Stars](https://img.shields.io/github/stars/sunny2109/SAFMN?style=social)](https://github.com/sunny2109/SAFMN)
+If Edge_SAFMN is helpful, please help to ⭐ the <a href='https://github.com/sunny2109/Edge_SAFMN' target='_blank'>Github Repo</a>. Thanks!
+[![GitHub Stars](https://img.shields.io/github/stars/sunny2109/Edge_SAFMN?style=social)](https://github.com/sunny2109/Edge_SAFMN)
 
 ---
 📝 **Citation**
 
 If our work is useful for your research, please consider citing:
 ```bibtex
-@inproceedings{sun2023safmn,
+@inproceedings{sun2023Edge_SAFMN,
     title={Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution},
     author={Sun, Long and Dong, Jiangxin and Tang, Jinhui and Pan, Jinshan},
     booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
@@ -188,7 +188,7 @@ If our work is useful for your research, please consider citing:
 }
 ```
 
-<center><img src='https://visitor-badge.laobi.icu/badge?page_id=sunny2109/SAFMN' alt='visitors'></center>
+<center><img src='https://visitor-badge.laobi.icu/badge?page_id=sunny2109/Edge_SAFMN' alt='visitors'></center>
 """
 
 demo = gr.Interface(

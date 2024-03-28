@@ -18,7 +18,7 @@ basicsr.egg-info/top_level.txt
 basicsr/archs/__init__.py
 basicsr/archs/arch_util.py
 basicsr/archs/discriminator_arch.py
-basicsr/archs/safmn_arch.py
+basicsr/archs/edge_Edge_SAFMN_arch.py
 basicsr/archs/vgg_arch.py
 basicsr/data/__init__.py
 basicsr/data/data_sampler.py

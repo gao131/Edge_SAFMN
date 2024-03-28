@@ -109,7 +109,7 @@ class AttBlock(nn.Module):
 
 
 # @ARCH_REGISTRY.register()
-class SAFMN_NTIRE(nn.Module):
+class Edge_SAFMN_NTIRE(nn.Module):
     def __init__(self, dim, n_blocks=8, ffn_scale=2.0, upscaling_factor=4):
         super().__init__()
         self.scale = upscaling_factor
@@ -146,7 +146,7 @@ if __name__== '__main__':
     # x = torch.randn(1, 3, 320, 180)#.to(device)
     x = torch.randn(1, 3, 256, 256)
 
-    model = SAFMN_NTIRE(dim=36, n_blocks=8, ffn_scale=2.0, upscaling_factor=4)
+    model = Edge_SAFMN_NTIRE(dim=36, n_blocks=8, ffn_scale=2.0, upscaling_factor=4)
     print(model)
     print(flop_count_table(FlopCountAnalysis(model, x), activations=ActivationCountAnalysis(model, x)))
     output = model(x)

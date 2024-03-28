@@ -2,7 +2,7 @@ import torch
 from copy import deepcopy
 from collections import OrderedDict 
 from torch.nn.parallel import DataParallel, DistributedDataParallel
-from basicsr.archs.safmn_arch import SAFMN
+from basicsr.archs.edge_Edge_SAFMN_arch import Edge_SAFMN
 
 def get_bare_model(net):
         """Get bare model, especially under wrapping with
@@ -13,7 +13,7 @@ def get_bare_model(net):
         return net
 
 
-def convert_safmn_model(net, pretrained_model_path, param_key=['params', 'params_ema']):
+def convert_Edge_SAFMN_model(net, pretrained_model_path, param_key=['params', 'params_ema']):
     
     ori_net = torch.load(pretrained_model_path, map_location=lambda storage, loc: storage)
 
@@ -33,10 +33,10 @@ def convert_safmn_model(net, pretrained_model_path, param_key=['params', 'params
             crt_net[crt_k] = ori_net[ori_k]
         save_dict[param_key_] =  crt_net
 
-    torch.save(save_dict, 'experiments/pretrain_model/SAFMN_DF2K_x4_official.pth')
+    torch.save(save_dict, 'experiments/pretrain_model/Edge_SAFMN_DF2K_x4_official.pth')
 
 if __name__ == '__main__':
-    load_path = 'experiments/SAFMN/MPSR_b64c36n8_500K_DF2K_x4_L1_0.05FFT/models/net_g_450000.pth'
-    model = SAFMN(dim=36, n_blocks=8, ffn_scale=2.0, upscaling_factor=4)
-    convert_safmn_model(model, load_path)
+    load_path = 'experiments/Edge_SAFMN/MPSR_b64c36n8_500K_DF2K_x4_L1_0.05FFT/models/net_g_450000.pth'
+    model = Edge_SAFMN(dim=36, n_blocks=8, ffn_scale=2.0, upscaling_factor=4)
+    convert_Edge_SAFMN_model(model, load_path)
 

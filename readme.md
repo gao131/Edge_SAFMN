@@ -6,4 +6,4 @@
 
 # Acknowledgements
 
-This code is built on [SAFMN](https://github.com/sunny2109/SAFMN) 
+This code is built on [Edge_SAFMN](https://github.com/sunny2109/Edge_SAFMN) 

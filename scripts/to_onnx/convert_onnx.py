@@ -6,14 +6,14 @@ import onnx
 import onnxruntime as ort
 import torch  
 import torch.onnx 
-from basicsr.archs.safmn_arch import SAFMN
+from basicsr.archs.edge_Edge_SAFMN_arch import Edge_SAFMN
 
 
 def convert_onnx(model, output_folder, is_dynamic_batches=False): 
     model.eval() 
 
     fake_x = torch.rand(1, 3, 640, 960, requires_grad=False)
-    output_name = os.path.join(output_folder, 'SAFMN_640_960_x2.onnx')
+    output_name = os.path.join(output_folder, 'Edge_SAFMN_640_960_x2.onnx')
     dynamic_params = None
     if is_dynamic_batches:
         dynamic_params = {'input': {0: 'batch_size'}, 'output': {0: 'batch_size'}}
@@ -36,7 +36,7 @@ def convert_pt(model, output_folder):
     model.eval() 
 
     fake_x = torch.rand(1, 3, 640, 960, requires_grad=False)
-    output_name = os.path.join(output_folder, 'SAFMN_640_960_x2.pt')
+    output_name = os.path.join(output_folder, 'Edge_SAFMN_640_960_x2.pt')
 
     traced_module = torch.jit.trace(model, fake_x)
     traced_module.save(output_name)
@@ -75,13 +75,13 @@ def test_onnx(onnx_model, input_path, save_path):
             output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
             
         output = (output.clip(0, 1) * 255.0).round().astype(np.uint8)
-        cv2.imwrite(os.path.join(save_path, f'{imgname}_SAFMN.png'), output)
+        cv2.imwrite(os.path.join(save_path, f'{imgname}_Edge_SAFMN.png'), output)
 
 
 if __name__ == "__main__":
-    model = model = SAFMN(dim=128, n_blocks=16, ffn_scale=2.0, upscaling_factor=2) 
+    model = model = Edge_SAFMN(dim=128, n_blocks=16, ffn_scale=2.0, upscaling_factor=2) 
 
-    pretrained_model = 'experiments/pretrained_models/SAFMN_L_Real_LSDIR_x2.pth'
+    pretrained_model = 'experiments/pretrained_models/Edge_SAFMN_L_Real_LSDIR_x2.pth'
     model.load_state_dict(torch.load(pretrained_model)['params'], strict=True)
 
     ###################Onnx export#################
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     convert_pt(model, output_folder)
 
     ###################Test the converted model #################
-    onnx_model = 'scripts/convert/SAFMN_640_960_x2.onnx'
+    onnx_model = 'scripts/convert/Edge_SAFMN_640_960_x2.onnx'
     input_path = 'datasets/real_test'
     save_path = 'results/onnx_results'
     test_onnx(onnx_model, input_path, save_path)
