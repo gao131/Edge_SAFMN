@@ -1,0 +1,45 @@
+name: 155B2Edge_SAFMN
+model_type: SRModel
+scale: 2
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+datasets:
+  test_1:  # the 1st test dataset
+    name: Set5
+    type: PairedImageDataset
+    #test HR image address
+    dataroot_gt: /mnt/22gaochennian/SR/shuffled2D/shuffled2D_test_HR
+    #test LR image address
+    dataroot_lq: /mnt/22gaochennian/SR/shuffled2D/shuffled2D_test_LR_default_X2
+    filename_tmpl: '{}x2'
+    io_backend:
+      type: disk
+
+# network structures
+network_g:
+  type: Edge_SAFMN
+  dim: 36
+  n_blocks: 8
+  ffn_scale: 2.0
+  upscaling_factor: 2
+
+# path
+path:
+  pretrain_network_g: /mnt/22gaochennian/SR/Edge_SAFMN-main/experiments/155B2Edge_SAFMN/models/net_g_15000.pth
+  strict_load_g: true
+
+# validation settings
+val:
+  save_img: true
+  suffix: ~  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 2
+      test_y_channel: true
+    ssim:
+      type: calculate_ssim
+      crop_border: 2
+      test_y_channel: true

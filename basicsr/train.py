@@ -185,14 +185,14 @@ def train_pipeline(root_path):
             iter_timer.start()
             train_data = prefetcher.next()
             # save models and training states
-            # if current_iter % opt['logger']['save_checkpoint_freq'] == 0:
-        if (epoch+1) % opt['logger']['save_checkpoint_freq'] == 0 and epoch > 0:
+        if current_iter % opt['logger']['save_checkpoint_freq'] == 0:
+        # if (epoch+1) % opt['logger']['save_checkpoint_freq'] == 0 and epoch > 0:
             logger.info('Saving models and training states.')
             model.save(epoch, current_iter)
 
             # validation
-            # if opt.get('val') is not None and (current_iter % opt['val']['val_freq'] == 0):
-        if opt.get('val') is not None and ((epoch+1) % opt['val']['val_freq'] == 0) and epoch > 0:
+        if opt.get('val') is not None and (current_iter % opt['val']['val_freq'] == 0):
+        # if opt.get('val') is not None and ((epoch+1) % opt['val']['val_freq'] == 0) and epoch > 0:
             if len(val_loaders) > 1:
                 logger.warning('Multiple validation datasets are *only* supported by SRModel.')
             for val_loader in val_loaders:
