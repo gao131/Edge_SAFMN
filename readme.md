@@ -24,7 +24,7 @@ You can also refer to this [INSTALL.md](https://github.com/XPixelGroup/BasicSR/b
 ### Training
 Run the following commands for training:
 ```
-python basicsr/train.py -opt options/train/Edge_SAFMN/train_DF2K_x4.yml
+python basicsr/train.py -opt options/train/Edge_SAFMN/train_x4.yml
 ```
 ### Testing 
 
