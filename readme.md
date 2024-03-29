@@ -32,7 +32,7 @@ python basicsr/train.py -opt options/train/Edge_SAFMN/train_DF2K_x4.yml
 - Download the testing dataset, you can download simple test data for testing through the [test dataset](https://drive.google.com/drive/folders/1j3Rf0evsKg84loUAkbftNDB4gr0Mnvq5?usp=drive_link).
 - Run the following commands:
 ```
-python basicsr/test.py -opt options/test/Edge_SAFMN/test_benchmark_x4.yml
+python basicsr/test.py -opt options/test/Edge_SAFMN/test_x4.yml
 ```
 
 ### Acknowledgement
