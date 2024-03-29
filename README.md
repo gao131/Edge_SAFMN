@@ -36,5 +36,5 @@ python basicsr/test.py -opt options/test/Edge_SAFMN/test_x4.yml
 ```
 
 ### Acknowledgement
-This code is built on [Edge_SAFMN](https://github.com/sunny2109/Edge_SAFMN) .
+This code is built on [SAFMN](https://github.com/sunny2109/SAFMN) .
 
