@@ -6,12 +6,12 @@ manual_seed: 0
 
 datasets:
   test_1:  # the 1st test dataset
-    name: Set5
+    name: testData
     type: PairedImageDataset
     #test HR image address
-    dataroot_gt: /mnt/22gaochennian/SR/shuffled2D/shuffled2D_test_HR
+    dataroot_gt: ./testdata/HR
     #test LR image address
-    dataroot_lq: /mnt/22gaochennian/SR/shuffled2D/shuffled2D_test_LR_default_X4
+    dataroot_lq: ./testdata/x4
     filename_tmpl: '{}x4'
     io_backend:
       type: disk
@@ -27,7 +27,7 @@ network_g:
 
 # path
 path:
-  pretrain_network_g: /mnt/22gaochennian/SR/Edge_SAFMN-main/experiments/155B4Edge_SAFMN/models/net_g_15000.pth
+  pretrain_network_g: ./checkpoint/100epoch_x4.pth
   
   strict_load_g: true
 
