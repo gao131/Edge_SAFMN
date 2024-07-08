@@ -1,4 +1,4 @@
-### 📖 Edge-Enhanced Rock Image Super-Resolution Reconstruction
+### 📖 Edge-enhanced super-resolution reconstruction of rock CT images
 
 Chennian Gao and Chen Qiu,  Wuhan University of Science and Technology
 
