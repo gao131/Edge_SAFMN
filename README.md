@@ -26,6 +26,10 @@ Run the following commands for training:
 ```
 python basicsr/train.py -opt options/train/Edge_SAFMN/train_x4.yml
 ```
+The following figure shows the changes in PSNR values on the validation set for the original SAFMN model and the proposed improved model with a downsampling factor of 4. Although both models continue to rise slowly after 100 epochs, their performance has largely stabilized. Due to time and computational resource constraints, experiments were conducted at epoch 100. During training, both models used a learning rate of 1e-4.
+
+![](psnr_plot.png)
+
 ### Testing 
 
 - Download the pretrained models, you can download the pretrained model from [checkpoint](https://drive.google.com/drive/folders/1oL4Y17Fw0zNu_Njqfhw6MvGCAI-u4VRe?usp=drive_link).
